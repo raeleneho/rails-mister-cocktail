@@ -1,74 +1,94 @@
-<div class="container">
 
-  <h1><%= @cocktail.name %></h1>
-   <%# <% if @cocktail.photo? %>
-    <%# <%= cl_image_tag @cocktail.photo.key, crop: :fill %> %>
-  <%# <% end %> %> %>
-  <%= link_to "Back to all cocktails", root_path %>
+<%= render  "shared/navbar" %>
 
-  <div class="row">
-    <div class="col-sm-12 col-md-6">
-      <h3>Recipe</h3>
-      <table class="table table-bordered">
-        <tbody>
-          <thead>
-            <th>Ingredient</th>
-            <th>Description</th>
-            <th>Action</th>
-          </thead>
-          <% @cocktail.doses.each do |dose| %>
-            <tr>
-              <td><%= dose.ingredient.name %></td>
-              <td><%= dose.description %></td>
-              <td>
-                <%= link_to dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } do %>
-                  <i class="fa fa-trash destroy_dose"></i>
-                <% end %>
-              </td>
-            </tr>
+<div class="show-container row justify-content-md-center">
+
+  <div class="container">
+    <div class="top-section">
+      <div class="col-lg-6 col-sm-4">
+        <h1><%= @cocktail.name %></h1>
+        <% if @cocktail.photo.attached? %>
+          <img class="card-img" src="<%= cl_image_path @cocktail.photo.key %>" alt="Card image cap">
+        <% else %>
+          <img class="card-img" src="https://images.unsplash.com/photo-1536935338788-846bb9981813?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1886&q=80" alt="Card image cap">
+        <% end %>
+      </div>
+    </div>
+
+    <div class="middle-section">
+      <div class="col-lg-6 col-sm-4">
+        <div class="recipe-card">
+          <h3>Recipe</h3>
+          <table class="table table-bordered">
+            <tbody>
+              <thead>
+                <th>Ingredient</th>
+                <th>Description</th>
+                <th>Action</th>
+              </thead>
+              <% @cocktail.doses.each do |dose| %>
+                <tr>
+                  <td><%= dose.ingredient.name %></td>
+                  <td><%= dose.description %></td>
+                  <td>
+                    <%= link_to dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } do %>
+                      <i class="fa fa-trash destroy_dose"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="dose-card">
+          <h3>Add dose</h3>
+          <%= simple_form_for [@cocktail, @dose] do |f| %>
+            <%= f.association :ingredient, input_html: { class: "beautiful-dropdown" }, include_hidden: false %>
+            <%= f.input :description %>
+            <%= f.input :photo, as: :file %>
+            <%= f.button :submit, class: "btn btn-ghost" %>
+          <% end %> 
+        </div>
+      </div>
+    </div>
+
+    <div class="review-section">
+      <div class="col-lg-6 col-sm-4">
+          <h3>Reviews</h3>
+
+          <% if @cocktail.reviews.empty? %>
+              <p>Be the first to let a review</p>
+          <% else %>
+            <ul class="list-group">
+              <% @cocktail.reviews.each do |review| %>
+                <li class="list-group-item d-flex justify-content-between align-items-center">  
+                  <span class="badge badge-pill">        
+                    <% counter = 0 %>
+                    <% 5.times do %>
+                      <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
+                      <% counter += 1 %>
+                    <% end %>    
+                  </span>             
+                  <%= review.content %>
+                </li>
+              <% end %>
+            </ul>
           <% end %>
-        </tbody>
-      </table>
+
+          <%= simple_form_for [@cocktail, @review] do |f| %>
+            <%= f.label :rating %>
+            <%= f.select :rating, 1..5  %>
+            <%= f.input :content %>
+            <%= f.button :submit, class: "btn btn-ghost" %> 
+          <% end %>
+
+        <%= link_to "Back to all cocktails", root_path, class: "back-link" %>
+      </div>
     </div>
   </div>
-
-  <h3>Add dose</h3>
-    <%= simple_form_for [@cocktail, @dose] do |f| %>
-      <%= f.association :ingredient, input_html: { class: "beautiful-dropdown" }, include_hidden: false %>
-      <%= f.input :description %>
-      <%= f.input :photo, as: :file %>
-      <%= f.button :submit, class: "btn btn-primary" %>
-    <% end %>
+    
 
 
-  <h3>Reviews</h3>
-
-  <% if @cocktail.reviews.empty? %>
-      <p>Be the first to let a review</p>
-  <% else %>
-    <ul class="list-group">
-      <% @cocktail.reviews.each do |review| %>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <span class="badge badge-primary badge-pill">
-            <% counter = 0 %>
-            <% 5.times do %>
-              <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
-              <% counter += 1 %>
-            <% end %>
-          </span>
-          <%= review.content %>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
-
-    <%= simple_form_for [@cocktail, @review] do |f| %>
-      <%= f.label :rating %>
-      <%= f.select :rating, 1..5  %>
-      <%= f.input :content %>
-      <%= f.button :submit, class: "btn btn-primary" %> 
-    <% end %>
+  
 
 </div>
-
-
