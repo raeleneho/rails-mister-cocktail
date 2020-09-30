@@ -4,10 +4,10 @@
 <div class="page-wrapper">
   <div class="show-container">
     <div class="row">
-      <div class="col-lg-6 col-sm-4">
+      <div class="col-sm-12">
         <h1><%= @cocktail.name %></h1>
         <% if @cocktail.photo.attached? %>
-            <%= cl_image_tag @cocktail.photo.key, width: 450, height: 500, class: "center-block" %>
+            <%= cl_image_tag @cocktail.photo.key, class: "show-image" %>
         <% else %>
           <img class="card-img" src="https://images.unsplash.com/photo-1536935338788-846bb9981813?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1886&q=80" alt="Card image cap">
         <% end %>
@@ -15,7 +15,7 @@
     </div>
 
     <div class="row description-container">
-      <div class="middle-section">
+      <div class="col-sm-12">
         <div class="recipe-card">
           <h3>Recipe</h3>
           <table class="table table-bordered">
@@ -48,12 +48,13 @@
             <%= f.button :submit, class: "btn btn-ghost" %>
           <% end %> 
         </div>
+       
       </div>
     </div>
-    
   </div>
-  <div class="review-section">
-    <div class="col-lg-12">
+
+  <div class="col-sm-12">
+    <div class="review-section">
         <h3>Reviews</h3>
 
         <% if @cocktail.reviews.empty? %>
@@ -81,8 +82,6 @@
           <%= f.input :content %>
           <%= f.button :submit, class: "btn btn-ghost" %> 
         <% end %>
-
-      <%= link_to "Back to all cocktails", root_path, class: "back-link" %>
     </div>
   </div>
 </div>

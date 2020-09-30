@@ -8,24 +8,27 @@
     <%= link_to "Add a cocktail", new_cocktail_path, class: "btn btn-ghost" %>
   </div>
 </div>
-<div class="container">
-  <div class="row">
-    <% @cocktails.each do |cocktail| %>
-      <div class="col-sm cards-index">
-        <%= link_to cocktail_path(cocktail) do %>
-            <div class="card">
-              <% if cocktail.photo.attached? %>
-                <img class="card-img-top" src="<%= cl_image_path cocktail.photo.key %>" alt="Card image cap">
-              <% else %>
-                <img class="card-img-top" src="https://images.unsplash.com/photo-1536935338788-846bb9981813?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1886&q=80" alt="Card image cap">
-              <% end %>
-                <div class="card-body">
-                  <h5 class="card-title"><%= cocktail.name %></h5>
-                </div>
-            </div>
-          <% end %>
-      </div>
-    <% end %>
+
+<div class="col-sm-12">
+  <div class="container">
+    <div class="row">
+      <% @cocktails.each do |cocktail| %>
+        <div class="col-sm cards-index">
+          <%= link_to cocktail_path(cocktail) do %>
+              <div class="card">
+                <% if cocktail.photo.attached? %>
+                  <%= cl_image_tag cocktail.photo.key, class: "card-img-top" %>
+                <% else %>
+                  <img class="card-img-top" src="https://images.unsplash.com/photo-1536935338788-846bb9981813?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1886&q=80" alt="Card image cap">
+                <% end %>
+                  <div class="card-body">
+                    <h5 class="card-title"><%= cocktail.name %></h5>
+                  </div>
+              </div>
+            <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 
