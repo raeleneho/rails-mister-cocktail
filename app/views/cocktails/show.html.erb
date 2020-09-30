@@ -4,7 +4,7 @@
 <div class="page-wrapper">
   <div class="show-container">
     <div class="row">
-      <div class="col-sm-12">
+      <div class="col-12">
         <h1><%= @cocktail.name %></h1>
         <% if @cocktail.photo.attached? %>
             <%= cl_image_tag @cocktail.photo.key, class: "show-image" %>
@@ -15,7 +15,7 @@
     </div>
 
     <div class="row description-container">
-      <div class="col-sm-12">
+      <div class="col-12">
         <div class="recipe-card">
           <h3>Recipe</h3>
           <table class="table table-bordered">
@@ -53,7 +53,7 @@
     </div>
   </div>
 
-  <div class="col-sm-12">
+  <div class="col-12">
     <div class="review-section">
         <h3>Reviews</h3>
 

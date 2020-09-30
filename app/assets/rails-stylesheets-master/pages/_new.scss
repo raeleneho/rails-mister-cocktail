@@ -1,0 +1,25 @@
+.page-wrapper {
+  margin: 20px 100px;
+
+  h1 {
+    padding: 20px 0;
+  }
+
+  .btn-ghost {
+    padding-top: 8px;
+    margin: 10px 0;
+    border-radius: 45px;
+    font-weight: bold;
+    color: #3b352a;
+    opacity: 0.5;
+    transition: opacity 0.23s ease;
+    background: linear-gradient( #bab299, #c4bba0);
+    transition: background 0.3s ease;
+    border: 1px solid #9e9780;
+  }
+
+  .btn-ghost:hover {
+    background: linear-gradient(#bbb6a4,#cac4ae);
+    color: white;
+  }
+}
