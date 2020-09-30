@@ -1,6 +1,12 @@
 .page-wrapper {
   width: auto;
   padding: 0 60px;
+  
+  .back-link {
+    margin: 20px 0;
+    text-decoration-line: underline;
+    color: rgba(0, 0, 0, 0.5);
+  }
 
   .btn-ghost {
     padding-top: 8px;
@@ -30,11 +36,6 @@
       width: 40vw;
       height: 80vh;
       object-fit: cover;
-    }
-    .back-link {
-      margin: 20px 0;
-      text-decoration-line: underline;
-      color: rgba(0, 0, 0, 0.5);
     }
   
       .recipe-card, .dose-card {
