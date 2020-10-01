@@ -62,3 +62,5 @@ gem 'rails-controller-testing', group: [ :test ]
 
 # ensure app's credentials with other web apps are secured
 gem 'dotenv-rails', groups: [:development, :test]
+
+gem 'uglifier', '~> 2.7.2'
