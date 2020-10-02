@@ -16,14 +16,16 @@
         <div class="col-sm cards-index">
           <%= link_to cocktail_path(cocktail) do %>
               <div class="card">
-                <% if cocktail.photo.attached? %>
-                  <%= cl_image_tag cocktail.photo.key, class: "card-img-top" %>
-                <% else %>
-                  <img class="card-img-top" src="https://images.unsplash.com/photo-1536935338788-846bb9981813?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1886&q=80" alt="Card image cap">
-                <% end %>
-                  <div class="card-body">
-                    <h5 class="card-title"><%= cocktail.name %></h5>
-                  </div>
+                <div data-aos="zoom-out" data-aos-duration="1000">
+                  <% if cocktail.photo.attached? %>
+                    <%= cl_image_tag cocktail.photo.key, class: "card-img-top" %>
+                  <% else %>
+                    <img class="card-img-top" src="https://images.unsplash.com/photo-1536935338788-846bb9981813?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1886&q=80" alt="Card image cap">
+                  <% end %>
+                    <div class="card-body">
+                      <h5 class="card-title"><%= cocktail.name %></h5>
+                    </div>
+                </div>
               </div>
             <% end %>
         </div>
@@ -44,3 +46,5 @@
     Rae
   </div>
 </div>
+  
+<script src="https://cdn.rawgit.com/michalsnik/aos/2.3.4/dist/aos.js"></script>
