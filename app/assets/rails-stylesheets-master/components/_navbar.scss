@@ -16,13 +16,15 @@
     font-size: 20px;
     letter-spacing: 1.8px;
   }
+
+  /* Right section */
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
-/* Right section */
-.navbar-right {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+
 
 
