@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rae's cocktails
 
-Things you may want to cover:
+A public rails web application that allows users to view cocktails menu and add their own creation.
 
-* Ruby version
+Objective: Build a three-model Rails app with cocktails, doses, ingredients
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
